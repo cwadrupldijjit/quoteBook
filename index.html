@@ -6,6 +6,7 @@
 		<title>Quotebook</title>
 		
 		<link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+		<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
 		<link rel="stylesheet" href="css/styles.css">
 	</head>
 	
@@ -14,28 +15,55 @@
 			<header>
 				<h1>Angular QuoteBook</h1>
 				
+				<md-button class="md-fab md-warn" aria-label="Add Quote" ng-click="mc.openAddQuote()">
+					<md-icon class="fa fa-plus"></md-icon>
+					<md-tooltip md-direction="bottom">
+						Add Quote
+					</md-tooltip>
+				</md-button>
 			</header>
-			<button ng-click="mc.test()">Test</button>
+			
+			
+			
 			<md-sidenav class="md-sidenav-right" md-component-id="right">
-				<h4>Add a Quote</h4>
+				<h4 class="md-warn">Add a Quote</h4>
 				<form ng-submit="mc.createQuoteData()">
-					<fieldset>
-						<textarea name="quoteAdd" id="" placeholder="Put the quote here" cols="30" rows="10" ng-model="mc.newQuote"></textarea>
-						<input type="text" id="author-input" placeholder="Put the author's name here" ng-model="mc.newAuthor">
+					<md-input-container>
+						<textarea name="quoteAdd" id="quote-input" placeholder="Put the quote here"  rows="5" ng-model="mc.newQuote" required></textarea>
+					</md-input-container>
+					
+					<md-input-container>
+						<input type="text" id="author-input" placeholder="Put the author's name here" ng-model="mc.newAuthor" required>
+					</md-input-container>
+					
+					<md-input-container>
 						<input type="submit" class="md-button md-raised md-primary" value="Add Quote">
-					</fieldset>
+					</md-input-container>
 				</form>
 			</md-sidenav>
 			
+			
+			
 			<article>
-				Favorite Quotes:
+				<button ng-click="mc.test()">Test</button>
+				<h3>Favorite Quotes:</h3>
 				
-				<md-card ng-repeat="quote in mc.quotes">
+				<md-card ng-repeat="quote in mc.quotes" aria-label="Delete">
+					<md-button class="md-fab md-mini md-primary">
+						<md-icon class="fa fa-minus default-unseen"></md-icon>
+						<md-icon class="fa fa-minus-circle default-seen"></md-icon>
+						
+						<md-tooltip md-direction="right">
+							Delete
+						</md-tooltip>
+					</md-button>
 					<h2>{{ quote.author }}</h2>
 					
 					<p>{{ quote.text }}</p>
 				</md-card>
 			</article>
+			
+			
 			
 			<footer>
 				<md-button class="md-raised md-primary" ng-click="mc.resetData()">

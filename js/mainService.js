@@ -37,7 +37,7 @@ app.service('MainService', function() {
 		}
 		
 		
-		if (hasText && hasAuthor) {
+		if (hasText && hasAuthor && data.text && data.author) {
 			for (var i = 0; i < quotes.length; i++) {
 				if (data.text === quotes[i].text)
 					isFound = true;

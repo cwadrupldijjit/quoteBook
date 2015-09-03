@@ -1,45 +1,149 @@
-aside {
-	float: right;
+/*default page values*/
+body {
+	margin: 0;
+	padding: 0;
 }
 
-#author-input {
-	display: block;
+	#page {
+		width: 800px;
+		
+		margin: 0 auto;
+	}
+	
+	.default-seen {
+		display: block;
+	}
+	.default-unseen {
+		display: none;
+	}
+
+
+/*header & contents*/
+header {
+	background-color: rgb(244,67,54);
+	color: white;
+	
+	padding: 20px;
+	width: 100%;
+	
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 50;
 }
 
+	header h1 {
+		padding: 0;
+		margin: 15px;
+		
+		display: inline-block
+	}
+	
+	header button:nth-child(2) {
+		font-size: 18pt;
+		
+		box-shadow: none;
+		
+		float: right;
+		position: relative;
+		left: -50px;
+	}
+
+
+/*add quote sidebar*/
+md-sidenav {
+	width: 500px;
+	
+	position: fixed;
+	z-index: 200;
+}
+
+	md-sidenav h4 {
+		color: white;
+		background-color: rgb(244,67,54); 
+		
+		margin: 0;
+		padding: 40px 10px;
+		
+		font-size: 18pt;
+	}
+	
+	#quote-input, #author-input {
+		margin: 30px 0;
+	}
+	
+	md-backdrop {
+		position: fixed;
+		z-index: 199;
+	}
+
+
+/*main article*/
 article {
 	width: 700px;
 	
-	margin: 0 auto;
+	margin: 130px auto;
 }
 
-md-card {
-	border-radius: 5px;
-	overflow: hidden;
-}
+	article button:first-child {
+		float: right;
+	}
+		
+		/*instance of quotes*/
+		md-card {
+			border-radius: 5px;
+			overflow: hidden;
+			
+			animation: all .1s;
+			
+			position: relative;
+		}
 
-md-card:hover {
-	position: relative;
-	left: 8px;
-}
+			md-card:hover {
+				left: 8px;
+			}
+			
+			md-card button:first-child {
+				position: absolute;
+				right: 0px;
+				top: -2px;
+				
+				text-align: center;
+				
+			}
+			
+			md-card button:first-child:hover {
+					color: red;		
+					
+					outline: 2px solid black;			
+			}
+			
+				md-card button:first-child md-icon {
+					padding: 5px 0;
+				}
+				
+					/*md-card button:first-child md-icon:hover {
+						color: red;
+					}*/
+			
+			md-card h2 {
+				color: white;
+				background-color: rgb(63,81,181); 
+				
+				margin: 0;
+				padding: 10px;
+			}
+			
+			md-card p {
+				padding: 5px 20px;
+			}
 
-md-card h2 {
-	color: white;
-	background-color: rgb(63,81,181); 
+	#data-reset {
+		background-image: url("https://cdn0.iconfinder.com/data/icons/business-vector-tab-bar-icons/48/A-bomb-512.png");
+		background-size: 100%;
+	}
 	
-	margin: 0;
-	padding: 10px;
-}
-
-md-card p {
-	padding: 5px 20px;
-}
-
-#data-reset {
-	background-image: url("https://cdn0.iconfinder.com/data/icons/business-vector-tab-bar-icons/48/A-bomb-512.png");
-	background-size: 100%;
-}
-
-#data-reset:active {
-	background-image: url("http://png-1.vector.me/files/images/2/5/255425/nuclear_explosion_thumb");
-	background-size: 100%;
-}
+	#data-reset:active {
+		background-image: url("http://png-1.vector.me/files/images/2/5/255425/nuclear_explosion_thumb");
+		background-size: 100%;
+	}

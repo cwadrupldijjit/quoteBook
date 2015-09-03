@@ -1,6 +1,6 @@
 var app = angular.module('quoteBook');
 
-app.controller('MainController', ['MainService', function(MainService) {
+app.controller('MainController', ['MainService', "$mdSidenav", function(MainService, $mdSidenav) {
 	var vm = this;
 	
 	vm.test = function(data) {
@@ -14,7 +14,12 @@ app.controller('MainController', ['MainService', function(MainService) {
 		addQuote({text: vm.newQuote, author: vm.newAuthor});
 		vm.quotes = MainService.getData();
 		vm.newQuote = vm.newAuthor = "";
+		$mdSidenav("right").toggle();
 	}
 	
 	vm.resetData = MainService.resetData;
+	
+	vm.openAddQuote = function() {
+		$mdSidenav("right").toggle();
+	}
 }]);
