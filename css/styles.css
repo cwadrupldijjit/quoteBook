@@ -1,0 +1,9 @@
+#data-reset {
+	background-image: url("https://cdn0.iconfinder.com/data/icons/business-vector-tab-bar-icons/48/A-bomb-512.png");
+	background-size: 100%;
+}
+
+#data-reset:active {
+	background-image: url("http://png-1.vector.me/files/images/2/5/255425/nuclear_explosion_thumb");
+	background-size: 100%;
+}
