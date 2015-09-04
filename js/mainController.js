@@ -5,7 +5,7 @@ app.controller('MainController', ['MainService', "$mdSidenav", function(MainServ
 	
 	vm.test = function(data) {
 		console.log(data);
-	}
+	};
 	
 	vm.quotes = MainService.getData();
 	var addQuote = MainService.addData
@@ -17,9 +17,13 @@ app.controller('MainController', ['MainService', "$mdSidenav", function(MainServ
 		$mdSidenav("right").toggle();
 	}
 	
+	vm.removeData = MainService.removeData;
+	
 	vm.resetData = MainService.resetData;
 	
 	vm.openAddQuote = function() {
 		$mdSidenav("right").toggle();
 	}
+	
+	vm.checkLocalStorage = MainService.getLocalStorage;
 }]);

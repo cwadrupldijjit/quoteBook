@@ -1,3 +1,4 @@
+/* global angular */
 var app = angular.module('quoteBook');
 
 app.service('MainService', function() {
@@ -21,6 +22,25 @@ app.service('MainService', function() {
 		{ text: 'What even is a jQuery?', author: 'Tyler S. McGinnis'}
 	];
 	
+	var storage = window.localStorage;
+	
+	function addToLocalStorage() {
+		storage.quotes = JSON.stringify(quotes);
+	}
+	
+	function loadFromLocalStorage() {
+		quotes = JSON.parse(storage.quotes);
+	}
+	
+	if (!storage.quotes) 
+			addToLocalStorage();
+	else {
+		loadFromLocalStorage();
+		// delete storage.quotes;
+	}
+	
+	
+	
 	this.getData = function() {
 		return quotes;
 	};
@@ -43,14 +63,16 @@ app.service('MainService', function() {
 					isFound = true;
 			}
 			
-			if (!isFound)
+			if (!isFound) {
 				quotes.push(data);
+				
+				addToLocalStorage();
+			}
 		}
 	};
 	
 	this.removeData = function(data) {
 		var isFound = false, foundIndex = -1;
-		
 		for (var i = 0; i < quotes.length; i++) {
 			if (data.text === quotes[i].text) {
 				isFound = true;
@@ -59,11 +81,20 @@ app.service('MainService', function() {
 			}
 		}
 		
-		if (!isFound)
+		if (isFound) {
 			quotes.splice(i, 1);
+			
+			addToLocalStorage();
+		}
 	};
 	
 	this.resetData = function() {
-		this.quotes = originalData.slice();
+		quotes = originalData.slice();
+		this.quotes = quotes;
+		addToLocalStorage();
+	}
+	
+	this.getLocalStorage = function() {
+		return storage.quotes;
 	}
 });

@@ -68,8 +68,17 @@ md-sidenav {
 		font-size: 18pt;
 	}
 	
+	md-sidenav form {
+		display: block;
+		margin: 30px;
+	}
+	
 	#quote-input, #author-input {
-		margin: 30px 0;
+		font-size: 14pt;
+		
+		width: 100%;
+		
+		margin: 10px 0;
 	}
 	
 	md-backdrop {
@@ -83,6 +92,7 @@ article {
 	width: 700px;
 	
 	margin: 130px auto;
+	margin-bottom: 50px;
 }
 
 	article button:first-child {
@@ -110,12 +120,6 @@ article {
 				
 				text-align: center;
 				
-			}
-			
-			md-card button:first-child:hover {
-					color: red;		
-					
-					outline: 2px solid black;			
 			}
 			
 				md-card button:first-child md-icon {

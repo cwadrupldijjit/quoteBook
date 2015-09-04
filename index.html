@@ -28,38 +28,39 @@
 			<md-sidenav class="md-sidenav-right" md-component-id="right">
 				<h4 class="md-warn">Add a Quote</h4>
 				<form ng-submit="mc.createQuoteData()">
-					<md-input-container>
-						<textarea name="quoteAdd" id="quote-input" placeholder="Put the quote here"  rows="5" ng-model="mc.newQuote" required></textarea>
-					</md-input-container>
+					<!--<md-input-container>-->
+						<!--<textarea placeholder="testing"></textarea>-->
+						<textarea name="quoteAdd" class="md-input" id="quote-input" placeholder="Put the quote here" ng-model="mc.newQuote" rows="3" required></textarea>
+					<!--</md-input-container>-->
 					
-					<md-input-container>
+					<!--<md-input-container>-->
 						<input type="text" id="author-input" placeholder="Put the author's name here" ng-model="mc.newAuthor" required>
-					</md-input-container>
+					<!--</md-input-container>-->
 					
-					<md-input-container>
-						<input type="submit" class="md-button md-raised md-primary" value="Add Quote">
-					</md-input-container>
+					<!--<md-input-container>-->
+						<input type="submit" class="md-button md-raised md-primary" value="Add Quote" aria-label="Add Quote">
+					<!--</md-input-container>-->
 				</form>
 			</md-sidenav>
 			
 			
 			
 			<article>
-				<button ng-click="mc.test()">Test</button>
 				<h3>Favorite Quotes:</h3>
 				
-				<md-card ng-repeat="quote in mc.quotes" aria-label="Delete">
-					<md-button class="md-fab md-mini md-primary">
+				<md-card ng-repeat="quote in mc.quotes track by $index">
+					<md-button class="md-fab md-mini md-primary" ng-click="mc.removeData(quote)" aria-label="Delete">
 						<md-icon class="fa fa-minus default-unseen"></md-icon>
 						<md-icon class="fa fa-minus-circle default-seen"></md-icon>
 						
-						<md-tooltip md-direction="right">
+						<md-tooltip md-direction="right" md-delay="1000">
 							Delete
 						</md-tooltip>
 					</md-button>
 					<h2>{{ quote.author }}</h2>
 					
 					<p>{{ quote.text }}</p>
+					<!--<button ng-click="mc.test(quote)">Test</button>-->
 				</md-card>
 			</article>
 			
@@ -72,6 +73,8 @@
 					</md-tooltip>
 					<md-icon aria-label="Reset" id="data-reset"></md-icon>
 				</md-button>
+				
+				<button ng-click="mc.test(mc.checkLocalStorage())">Test</button>
 			</footer>
 		</div>
 		
